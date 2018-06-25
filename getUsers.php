@@ -26,7 +26,8 @@ if($result){
                         'password' => $row[1],
                         'name'=>$row[2],
                         'room_num'=>$row[3],
-                        'parent_phone'=>$row[4]
+                        'student_phone'=>$row[4],
+                        'parent_phone'=>$row[5]
                 ));
         }
             header('Content-Type: application/json; charset=utf8');

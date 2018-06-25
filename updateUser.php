@@ -21,7 +21,7 @@ $student_phone = $_POST["student_phone"];
 $parent_phone = $_POST["parent_phone"];
 
 if($before_emirim_id == $emirim_id){
-        $strSQL = "UPDATE user SET room_num=".$room_num.", name='".$name."', student_phone='".$student_phone."', parent_phone='".$parent_phone."' WHERE emirim_$";
+        $strSQL = "UPDATE user SET room_num=".$room_num.", name='".$name."', student_phone='".$student_phone."', parent_phone='".$parent_phone."' WHERE emirim_id='".$emirim_id."'";
         $result=mysqli_query($link,$strSQL);
 
         if(!$result){

@@ -4,7 +4,7 @@ header('Access-Control-Allow-Origin: *');
 header('Access-Control-Allow-Methods: GET, POST, PUT');
 header("Access-Control-Allow-Headers: X-Requested-With, Content-Type");
 
-$link=mysqli_connect("localhost","admin","admin@)!*", "ohdormitory" );
+$link=mysqli_connect("localhost","dorm","admin@)!*", "dorm" );
 if (!$link)
 {
     echo "MySQL 접속 에러 : ";
@@ -13,13 +13,6 @@ if (!$link)
 }
 
         mysqli_set_charset($link,"utf8");
-
-        $emirim_id = $_POST['emirim_id'];
-        $date = $_POST['date'];
-        $score_id = $_POST['score_id'];
-
-        $strSQL = "INSERT INTO user_score VALUES(null, '".$emirim_id."', '".$da$
-        $result=mysqli_query($link,$strSQL);
 
         $title = $_POST['title'];
         $type = $_POST['type'];
@@ -31,11 +24,12 @@ if (!$link)
         $insertNoticeResult = mysqli_query($link, $insertNotice);
 
         if(!$insertNoticeResult){
-                echo "SQL문 처리중 에러 발생 : ";
+                echo "1.SQL문 처리중 에러 발생 : ";
                 echo mysqli_error($link);
         }
 
         $selectNotice = "SELECT notice_id FROM notice WHERE title='".$title."' and type=".$type." and w_time = '".$w_time."' and d_time = '".$d_time."'";
+       
 
         $selectNoticeResult=mysqli_query($link,$selectNotice);
 
@@ -45,14 +39,14 @@ if (!$link)
                 while($row=mysqli_fetch_array($result)){
                     $notice_id = $row[0];
                 }
-        }else{
-                echo "SQL문 처리중 에러 발생 : ";
+        }else{ 
+                echo "2.SQL문 처리중 에러 발생 : "
                  echo mysqli_error($link);
         }
 
 
         if($notice_id == -1){
-                 echo "SQL문 처리중 에러 발생 : $notice_id = -1";
+                 echo "3.SQL문 처리중 에러 발생 : $notice_id = -1";
         }else{
                 if($type == 1){
                 // basic
@@ -61,7 +55,7 @@ if (!$link)
                         $result = mysqli_query($link, $sql);
 
                         if(!$result){
-                                echo "SQL문 처리중 에러 발생 : ";
+                                echo "4.SQL문 처리중 에러 발생 : ";
                                 echo mysqli_error($link);
                         }
 
@@ -77,7 +71,7 @@ if (!$link)
                                 $result = mysqli_query($link, $sql);
 
                                 if(!$result){
-                                        echo "SQL문 처리중 에러 발생 : ";
+                                        echo "5.SQL문 처리중 에러 발생 : ";
                                         echo mysqli_error($link);
                                 }
 
@@ -96,9 +90,10 @@ if (!$link)
                 $result = mysqli_query($link, $sql);
 
                 if(!$result){
-                        echo "SQL문 처리중 에러 발생 : ";
+                        echo "6.SQL문 처리중 에러 발생 : ";
                         echo mysqli_error($link);
                 }
         }
-}
-mysqli_close($link);
+        }
+        mysqli_close($link);
+?>
