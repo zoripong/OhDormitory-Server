@@ -36,20 +36,21 @@ if (!$link)
         $notice_id = -1;
 
         if($selectNoticeResult){
-                while($row=mysqli_fetch_array($result)){
-                    $notice_id = $row[0];
+                while($row=mysqli_fetch_array($selectNoticeResult)){
+                        $notice_id = $row[0];
                 }
         }else{ 
-                echo "2.SQL문 처리중 에러 발생 : "
-                 echo mysqli_error($link);
+                echo "2.SQL문 처리중 에러 발생 : ";
+                echo mysqli_error($link);
         }
 
 
         if($notice_id == -1){
                  echo "3.SQL문 처리중 에러 발생 : $notice_id = -1";
-        }else{
-                if($type == 1){
+        }else{  
+                if($type == 0){
                 // basic
+                // echo "완료";
                         $content = $_POST['content'];
                         $sql = "INSERT INTO basic_notice VALUES (".$notice_id.",'".$content."')";
                         $result = mysqli_query($link, $sql);
@@ -59,7 +60,7 @@ if (!$link)
                                 echo mysqli_error($link);
                         }
 
-                }else if($type == 2){
+                }else if($type == 1){
 
                 // clean
                         //TODO : array
@@ -78,7 +79,7 @@ if (!$link)
                         }
 
 
-                }else if($type == 3){
+                }else if($type == 2){
                 // sleep out
                 $application_deadline = $_POST['sleep_d_time'];
                 $sleep_w_time = $_POST['sleep_w_time'];

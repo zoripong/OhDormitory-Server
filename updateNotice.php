@@ -68,6 +68,9 @@
 
     mysqli_close($link);
         
+    //TODO
+    // Debug updateNotice.php
+    // Test deleteNotice.php
         
         
 ?>
