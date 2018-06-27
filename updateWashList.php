@@ -30,11 +30,11 @@ $isInsert = $_POST["isInsert"];
 echo $isInsert;
 
 $sql ="";
-if($isInsert === "true"){
+if($isInsert == "true"){
     //insert
     $sql = "insert into wash_applying_user values(null, ".$date.", ".$washer_num.", ".$wash_time.", '".$emirim_id."')";
 }else{
-    $sql = "delete from wash_applying_user where wash_day=".$date." AND washer_num=".$washer_num." AND wash_time=".$wash_time." AND emirim_id='".$emirim_id."'";
+    $sql = "delete from wash_applying_user where emirim_id='".$emirim_id."' AND wash_day=".$date;
 
 }
 
