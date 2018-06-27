@@ -7,7 +7,7 @@ header("Access-Control-Allow-Headers: X-Requested-With, Content-Type");
     date_default_timezone_set('Asia/Seoul');
     $date = date('w');
 
-    $link=mysqli_connect("localhost","admin","admin@)!*", "ohdormitory" );
+    $link=mysqli_connect("localhost","dorm","admin@)!*", "dorm" );
 
     if (!$link)
     {
