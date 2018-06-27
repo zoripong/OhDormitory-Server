@@ -57,7 +57,7 @@ header("Access-Control-Allow-Headers: X-Requested-With, Content-Type");
             $sub_row = mysqli_fetch_array($sub_result);
             
         
-            echo $sub_row[1].'호 '.$sub_row[0];
+            // echo $sub_row[1].'호 '.$sub_row[0];
 
             array_push($data, array(
                 'wash_id' => $row[0],

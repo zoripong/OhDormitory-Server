@@ -40,9 +40,11 @@
     }else if($type == 1){
         // "clean_area" : clean_json,
         $clean_area = $_POST["clean_area"];
+        echo "\n".$clean_area."\n";
         for($i = 0; $i < 14; $i++ ){
             //DEBUG
-            $sql = "UPDATE clean_notice SET clean_room='".$clean_area[i]."' where notice_id=".$notice_id." AND clean_area=".$i;
+            $sql = "UPDATE clean_notice SET clean_room='".$clean_area[$i]."' where notice_id=".$notice_id." AND clean_area=".$i;
+            // echo $sql;
             $result=mysqli_query($link, $sql);
             if(!$result){
     
@@ -50,6 +52,7 @@
                 echo mysqli_error($link);
             }
         }
+
     }else if($type == 2){
         //"sleep_w_time" : $("#modify_sleep_w_time").val(),
         // "sleep_d_time" : $("#modify_sleep_d_time").val()

@@ -1,4 +1,4 @@
-<?
+<?php
 
 header('Access-Control-Allow-Origin: *');
 header('Access-Control-Allow-Methods: GET, POST, PUT');
@@ -22,13 +22,15 @@ mysqli_set_charset($link,"utf8");
 // this.isInsert = isInsert;
 */
 
-$washer_num = $_REQUEST["washer_num"];
-$wash_time = $_REQUEST["wash_time"];
-$emirim_id = $_REQUEST["emirim_id"];
-$isInsert = $_REQUEST["isInsert"];
+$washer_num = $_POST["washer_num"];
+$wash_time = $_POST["wash_time"];
+$emirim_id = $_POST["emirim_id"];
+$isInsert = $_POST["isInsert"];
+
+echo $isInsert;
 
 $sql ="";
-if(isInsert){
+if($isInsert === "true"){
     //insert
     $sql = "insert into wash_applying_user values(null, ".$date.", ".$washer_num.", ".$wash_time.", '".$emirim_id."')";
 }else{
@@ -45,5 +47,5 @@ if(!$result){
 }
     
 mysqli_close($link);
-    
+//TODO Delete    
 ?>
