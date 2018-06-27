@@ -19,7 +19,7 @@
     $date = $_POST['date'];
     $score_id = $_POST['score_id'];
 
-    $sql = "INSERT INTO user_score VALUES(null, '".$emirim_id."', '".$date.", ".$score_id.")";
+    $sql = "INSERT INTO user_score VALUES(null, '".$emirim_id."', '".$date."', ".$score_id.")";
     $result=mysqli_query($link,$sql);
     
     if(!$result){

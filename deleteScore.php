@@ -17,7 +17,7 @@
     $result = mysqli_query($link, $sql);
     if(!$result){
             echo "SQL문 처리중 에러 발생 : ";
-            ehco mysqli_error($link);
+            echo mysqli_error($link);
     }
 
     mysqli_close($link);
