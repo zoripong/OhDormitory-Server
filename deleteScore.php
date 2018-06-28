@@ -16,8 +16,8 @@
     $sql = "DELETE FROM user_score WHERE id=".$id;
     $result = mysqli_query($link, $sql);
     if(!$result){
-            echo "SQL문 처리중 에러 발생 : ";
-            echo mysqli_error($link);
+        echo "SQL문 처리중 에러 발생 : ";
+        echo mysqli_error($link);
     }
 
     mysqli_close($link);

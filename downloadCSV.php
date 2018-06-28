@@ -1,10 +1,10 @@
 <?php
-
+setlocale(LC_CTYPE, 'ko_KR.utf8'); 
 header('Access-Control-Allow-Origin: *');
 header('Access-Control-Allow-Methods: GET, POST, PUT');
 header("Access-Control-Allow-Headers: X-Requested-With, Content-Type");
 
-$con=mysqli_connect("localhost","admin","admin@)!*", "ohdormitory" );
+$con=mysqli_connect("localhost","dorm","admin@)!*", "dorm" );
 
 if (!$con)
 {
@@ -13,7 +13,7 @@ if (!$con)
     exit();
 }
 
-$query = "SELECT * FROM user";
+$query = "SELECT room_num, name, emirim_id, password, student_phone, parent_phone FROM user";
 if (!$result = mysqli_query($con, $query)) {
     exit(mysqli_error($con));
 }
@@ -24,13 +24,16 @@ if (mysqli_num_rows($result) > 0) {
         $users[] = $row;
     }
 }
-
+header('Content-Encoding: UTF-8');
 header('Content-Type: text/csv; charset=utf-8');
-header('Content-Disposition: attachment; filename=Users.csv');
+header('Content-Disposition: attachment; filename=학생계정정보.csv');
+echo "\xEF\xBB\xBF"; 
 $output = fopen('php://output', 'w');
-fputcsv($output, array('emirim_id', 'password', 'name', 'room_num', 'student_phone', 'parent_phone'));
+// fputcsv($output, array('emirim_id', 'password', 'name', 'room_num', 'student_phone', 'parent_phone'));
+fputcsv($output, array( '호수', '이름', '계정', '비밀번호',  '학생 번호', '학부모 번호'));
 
 if (count($users) > 0) {
+
     foreach ($users as $row) {
         //$row[4] = "0"+$row[4];
         fputcsv($output, $row);

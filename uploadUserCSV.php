@@ -5,7 +5,7 @@ header("Access-Control-Allow-Headers: X-Requested-With, Content-Type");
 ini_set("allow_url_fopen", 1);
 
 if(isset($_POST["submit"])){
-    $link=mysqli_connect("localhost","admin","admin@)!*", "ohdormitory" );
+    $link=mysqli_connect("localhost","dorm","admin@)!*", "dorm" );
 
     if (!$link)
     {
@@ -23,16 +23,21 @@ if(isset($_POST["submit"])){
     // if($ext=="csv")
     // {
     $file = fopen($filename, "r");
-            while (($emapData = fgetcsv($file, 10000, ",")) !== FALSE)
-            {
-                $sql = "INSERT into tableName(name,email,address) values('$emapData[0]','$emapData[1]','$emapData[2]')";
-                $result = mysqli_query($sql);
-                if(!$result){
-                    echo "error";
-                }
+        while (($emapData = fgetcsv($file, 10000, ",")) !== FALSE)
+        {
+
+            $sql = "INSERT INTO user VALUES ('".$emapData[1]."',  '".$emapData[2]."',  '".$emapData[3]."', ".$emapData[0].",  '".$emapData[4]."',  '".$emapData[5]."')";
+            //519	test	test	test2	1086158458	1086138458
+
+            // $sql = "INSERT INTO user VALUES ('test3',  'test3',  'kimdoori', 406,  '01012345678',  '01087654321')";
+            //$sql = "INSERT into tableName(name,email,address) values('$emapData[0]','$emapData[1]','$emapData[2]')";
+            $result = mysqli_query($sql);
+            if(!$result){
+                echo "error";
             }
-            fclose($file);
-            echo "CSV File has been successfully Imported.";
+        }
+        fclose($file);
+        echo "CSV File has been successfully Imported.";
     // }
     // else {
         // echo "Error: Please Upload only CSV File";

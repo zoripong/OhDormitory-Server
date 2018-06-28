@@ -39,6 +39,4 @@
 
 
         mysqli_close($link);
-
-
 ?>
